@@ -17,7 +17,7 @@
             <% end %>
         <% else %>
           <p>No workers have claimed this job!</p>
-          <%= link_to "click here to claim it now", job_path(@job, :pending => true), :method => "patch", remote: true %>
+          <%= link_to "Click here to claim it now", job_path(@job, :pending => true), :method => "patch", remote: true %>
       </div>
       <% end %>
     <% end %>
