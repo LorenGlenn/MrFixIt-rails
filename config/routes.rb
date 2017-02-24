@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   resources :workers
-  resources :jobs, only: [:index]
   resources :users do
     resources :jobs
   end

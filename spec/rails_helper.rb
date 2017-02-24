@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'launchy'
 require 'support/factory_girl'
@@ -21,6 +22,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
 end
 
 Shoulda::Matchers.configure do |config|

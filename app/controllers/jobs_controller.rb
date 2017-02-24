@@ -5,8 +5,8 @@ class JobsController < ApplicationController
   end
 
   def new
+    @user = current_user
    @job = Job.new
-   render :new
   end
 
   def show
@@ -17,7 +17,7 @@ class JobsController < ApplicationController
     @user = current_user
     @job = @user.jobs.new(job_params)
     if @job.save
-      redirect_to jobs_path
+      redirect_to user_jobs_path(1)
     else
       render :new
     end
@@ -51,7 +51,7 @@ class JobsController < ApplicationController
     else
       # We need to streamline this process better in the future! - Mr. Fix-It.
       flash[:notice] = 'You must have a worker account to claim a job. Register for one using the link in the navbar above.'
-      redirect_to job_path(@job)
+      redirect_to user_job_path(current_user, @job)
     end
   end
 
