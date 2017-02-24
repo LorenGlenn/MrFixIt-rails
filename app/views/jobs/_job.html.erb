@@ -1,1 +1,7 @@
-<h3>You have claimed this job! <%= link_to "Click here to go to your dashboard", worker_path(current_worker) %> </h3>
+<% if @job.pending == true %>
+  <h3>You have claimed this job! <%= link_to "Click here to go to your dashboard", worker_path(current_worker) %> </h3>
+<% elsif @job.pending == false && @job.completed == false %>
+  <h3>You are now working this job!</h3>
+<% elsif @job.completed == true %>
+  <h3>You have completed this job!</h3>
+<% end %>
