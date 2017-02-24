@@ -11,12 +11,18 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'simplecov'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
 end
 
 group :development do

@@ -5,18 +5,34 @@
   <div class="panel-body">
     <ul>
       <% @jobs.each do |job| %>
-        <% if job.completed %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Completed</li>
-          <hr>
-        <% elsif job.pending %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Pending</li>
-          <hr>
-        <% elsif job.worker_id.nil? %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: No | Status: None</li>
-          <hr>
+        <% if worker_signed_in? %>
+          <% if job.completed %>
+            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Completed</li>
+            <hr>
+          <% elsif job.pending %>
+            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Pending</li>
+            <hr>
+          <% elsif job.worker_id.nil? %>
+            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: No | Status: None</li>
+            <hr>
+          <% else %>
+            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Working</li>
+            <hr>
+          <% end %>
         <% else %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Working</li>
-          <hr>
+          <% if job.completed %>
+            <li><%= job.title %> - Claimed: Yes | Status: Completed</li>
+            <hr>
+          <% elsif job.pending %>
+            <li><%=  job.title %> - Claimed: Yes | Status: Pending</li>
+            <hr>
+          <% elsif job.worker_id.nil? %>
+            <li><%= job.title %> - Claimed: No | Status: None</li>
+            <hr>
+          <% else %>
+            <li><%= job.title %> - Claimed: Yes | Status: Working</li>
+            <hr>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
