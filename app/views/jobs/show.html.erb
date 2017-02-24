@@ -7,6 +7,8 @@
 <% else %>
 <p>No one has claimed this job!</p>
 <% if worker_signed_in? %>
-<%= link_to "click here to claim it now", user_job_path(@job.user_id, @job), :method => "patch" %>
+<div id="claim-link">
+  <%= link_to "click here to claim it now", user_job_path(@job.user_id, @job), :method => "patch", remote: true %>
+</div>
 <% end %>
 <% end %>
