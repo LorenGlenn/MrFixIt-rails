@@ -7,16 +7,16 @@
       <% @jobs.each do |job| %>
         <% if worker_signed_in? %>
           <% if job.completed %>
-            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Completed</li>
+            <li><%= link_to job.title, job_path(job) %> - Claimed: Yes | Status: Completed</li>
             <hr>
           <% elsif job.pending %>
-            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Pending</li>
+            <li><%= link_to job.title, job_path(job) %> - Claimed: Yes | Status: Pending</li>
             <hr>
           <% elsif job.worker_id.nil? %>
-            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: No | Status: None</li>
+            <li><%= link_to job.title, job_path(job) %> - Claimed: No | Status: None</li>
             <hr>
           <% else %>
-            <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Working</li>
+            <li><%= link_to job.title, job_path(job) %> - Claimed: Yes | Status: Working</li>
             <hr>
           <% end %>
         <% else %>

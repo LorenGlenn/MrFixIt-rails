@@ -15,9 +15,9 @@ class JobsController < ApplicationController
 
   def create
     @user = current_user
-    @job = @user.jobs.new(job_params)
+    @job = Job.new(job_params)
     if @job.save
-      redirect_to user_jobs_path(1)
+      redirect_to jobs_path
     else
       render :new
     end
@@ -29,19 +29,19 @@ class JobsController < ApplicationController
       if params[:pending]
         @job.update(pending: true, worker_id: current_worker.id)
         respond_to  do |format|
-        format.html { redirect_to user_job_path(current_user.id, @job.id) }
+        format.html { redirect_to job_path(@job.id) }
         format.js
         end
       elsif params[:working]
         @job.update(pending: false)
         respond_to  do |format|
-        format.html { redirect_to user_job_path(current_user.id, @job.id) }
+        format.html { redirect_to job_path(@job.id) }
         format.js
         end
       elsif params[:completed]
         @job.update(completed: true)
         respond_to  do |format|
-        format.html { redirect_to user_job_path(current_user.id, @job.id) }
+        format.html { redirect_to job_path(@job.id) }
         format.js
         end
       else
@@ -51,7 +51,7 @@ class JobsController < ApplicationController
     else
       # We need to streamline this process better in the future! - Mr. Fix-It.
       flash[:notice] = 'You must have a worker account to claim a job. Register for one using the link in the navbar above.'
-      redirect_to user_job_path(current_user, @job)
+      redirect_to job_path(@job)
     end
   end
 

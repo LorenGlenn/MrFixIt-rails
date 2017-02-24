@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   resources :workers
-  resources :users do
-    resources :jobs
-  end
+  resources :users
+  resources :jobs
+
 end

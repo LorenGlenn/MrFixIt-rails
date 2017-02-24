@@ -6,13 +6,13 @@
     <ul>
       <% current_worker.jobs.each do |job| %>
         <% if job.completed %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Status: Completed</li>
+          <li><%= link_to job.title, job_path(job) %> - Status: Completed</li>
           <hr>
         <% elsif job.pending %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Status: Pending</li>
+          <li><%= link_to job.title, job_path(job) %> - Status: Pending</li>
           <hr>
         <% else %>
-          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Status: Working</li>
+          <li><%= link_to job.title, job_path(job) %> - Status: Working</li>
           <hr>
         <% end %>
       <% end %>

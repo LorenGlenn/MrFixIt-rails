@@ -9,15 +9,15 @@
       <% if worker_signed_in? %>
         <% if @job.worker_id %>
           <% if @job.worker_id == current_worker.id && @job.pending == true %>
-              <p>You claimed this job!</p> <%= link_to "Click here to mark as being worked.", user_job_path(@job.user_id, @job, :working => true), :method => "patch", remote: true %>
+              <p>You claimed this job!</p> <%= link_to "Click here to mark as being worked.", job_path(@job, :working => true), :method => "patch", remote: true %>
             <% elsif @job.worker_id == current_worker.id && @job.pending == false && @job.completed == false %>
-              <p>You are currently working on this job!</p> <%= link_to "Click here to mark as completed", user_job_path(@job.user_id, @job, :completed => true), :method => "patch", remote: true %>
+              <p>You are currently working on this job!</p> <%= link_to "Click here to mark as completed", job_path(@job, :completed => true), :method => "patch", remote: true %>
             <% else %>
               <p>Someone has already claimed this job; it's currently pending.</p>
             <% end %>
         <% else %>
           <p>No workers have claimed this job!</p>
-          <%= link_to "click here to claim it now", user_job_path(@job.user_id, @job, :pending => true), :method => "patch", remote: true %>
+          <%= link_to "click here to claim it now", job_path(@job, :pending => true), :method => "patch", remote: true %>
       </div>
       <% end %>
     <% end %>

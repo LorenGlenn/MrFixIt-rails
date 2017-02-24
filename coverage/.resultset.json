@@ -9,10 +9,10 @@
         1,
         1,
         1,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -594,7 +594,7 @@
         1,
         null,
         1,
-        71,
+        77,
         null,
         null,
         null,
@@ -606,20 +606,18 @@
         1,
         null,
         1,
-        2,
         null
       ],
       "/Users/Guest/Desktop/MrFixIt-rails/app/models/job.rb": [
         1,
         1,
-        1,
+        null,
         null
       ],
       "/Users/Guest/Desktop/MrFixIt-rails/spec/models/user_spec.rb": [
         1,
         null,
         1,
-        2,
         null
       ],
       "/Users/Guest/Desktop/MrFixIt-rails/spec/models/worker_spec.rb": [
@@ -633,23 +631,23 @@
         1,
         null,
         1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
         0,
         null,
         null,
         1,
         1,
         1,
-        null,
-        null,
         1,
-        0,
-        null,
-        null,
         1,
-        0,
-        0,
-        0,
-        0,
         null,
         0,
         null,
@@ -690,7 +688,7 @@
         1,
         null,
         1,
-        0,
+        1,
         null,
         null,
         null
@@ -701,6 +699,6 @@
         null
       ]
     },
-    "timestamp": 1487970142
+    "timestamp": 1487970965
   }
 }
