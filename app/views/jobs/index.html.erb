@@ -2,6 +2,14 @@
 
 <ul>
   <% @jobs.each do |job| %>
-  <li><%= link_to job.title, user_job_path(job.user_id, job) %></li>
+    <% if job.completed %>
+      <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Completed</li>
+    <% elsif job.pending %>
+      <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Pending</li>
+    <% elsif job.worker_id.nil? %>
+      <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: No | Status: None</li>
+    <% else %>
+      <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Claimed: Yes | Status: Working</li>
+    <% end %>
   <% end %>
 </ul>

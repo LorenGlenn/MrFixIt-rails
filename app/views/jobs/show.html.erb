@@ -11,7 +11,7 @@
         <p>Someone has already claimed this job; it's currently pending.</p>
       <% end %>
   <% else %>
-  <p>No one has claimed this job!</p>
+  <p>No workers have claimed this job!</p>
   <% if worker_signed_in? %>
     <%= link_to "click here to claim it now", user_job_path(@job.user_id, @job, :pending => true), :method => "patch", remote: true %>
 </div>
