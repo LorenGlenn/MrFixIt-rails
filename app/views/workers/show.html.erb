@@ -1,7 +1,21 @@
-<h1><%= current_worker.email %>'s claimed jobs:</h1>
-
-<ul>
-<% current_worker.jobs.each do |job| %>
-<li><%= link_to job.title, user_job_path(job.user_id, job) %></li>
-<% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1><%= current_worker.email %>'s claimed jobs:</h1>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% current_worker.jobs.each do |job| %>
+        <% if job.completed %>
+          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Status: Completed</li>
+          <hr>
+        <% elsif job.pending %>
+          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Status: Pending</li>
+          <hr>
+        <% else %>
+          <li><%= link_to job.title, user_job_path(job.user_id, job) %> - Status: Working</li>
+          <hr>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
